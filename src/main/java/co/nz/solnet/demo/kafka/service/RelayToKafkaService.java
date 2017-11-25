@@ -6,6 +6,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.Properties;
 
 @Service
@@ -17,10 +18,11 @@ public class RelayToKafkaService {
     private Properties kafkaProperties;
 
     public void splitAndRelay(String message) {
+        String ts = String.valueOf(new Date().getTime());
         message.chars()
                 .forEach(ch -> {
                     String str = String.valueOf((char)ch);
-                    kafkaProducerWrapper.getStringProducer().send(new ProducerRecord<>(kafkaProperties.getProperty("first.topic"), str, str));
+                    kafkaProducerWrapper.getStringProducer().send(new ProducerRecord<>(kafkaProperties.getProperty("first.topic"), ts, str));
         });
     }
 }
