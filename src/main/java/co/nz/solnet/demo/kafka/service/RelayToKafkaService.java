@@ -1,7 +1,5 @@
 package co.nz.solnet.demo.kafka.service;
 
-import co.nz.solnet.demo.kafka.KafkaConfiguration;
-import co.nz.solnet.demo.kafka.KafkaProducerWrapper;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

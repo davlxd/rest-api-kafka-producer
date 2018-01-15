@@ -1,5 +1,6 @@
 package co.nz.solnet.demo.kafka;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,10 +8,14 @@ import java.util.Properties;
 
 @Configuration
 public class KafkaConfiguration {
+    @Value("${BOOTSTRAP_SERVERS}")
+    private String bootstrapServers;
+
     @Bean
     public Properties kafkaProperties() {
         Properties properties = new Properties();
-        properties.put("bootstrap.servers", "localhost:9092");
+
+        properties.put("bootstrap.servers", bootstrapServers);
         properties.put("acks", "all");
         properties.put("retries", 0);
         properties.put("batch.size", 16384);
@@ -23,5 +28,4 @@ public class KafkaConfiguration {
 
         return properties;
     }
-
 }

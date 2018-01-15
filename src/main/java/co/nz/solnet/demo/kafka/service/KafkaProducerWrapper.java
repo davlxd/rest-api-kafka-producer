@@ -1,4 +1,4 @@
-package co.nz.solnet.demo.kafka;
+package co.nz.solnet.demo.kafka.service;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
